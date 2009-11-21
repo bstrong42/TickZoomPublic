@@ -1,0 +1,7 @@
+obj/
+bin/
+target/
+*.out
+Artifacts/
+*.temp
+Engine/
