@@ -217,6 +217,10 @@ namespace TickZoom.Common
         	if( !allowReversal && Strategy.Position.HasPosition) {
         		throw new TickZoomException("Strategy must be flat before a short market entry.");
         	}
+        	/// <summary>
+        	/// comment.
+        	/// </summary>
+        	/// <param name="allowReversal"></param>
         	sellMarket.Price = 0;
         	sellMarket.Positions = positions;
         	sellMarket.IsActive = true;
