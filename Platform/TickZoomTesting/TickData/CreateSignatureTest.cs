@@ -90,6 +90,11 @@ namespace TickZoom.TickData
 		}
 		
 		[Test]
+		unsafe public void TickToBytes() {
+			byte[] bytes = new byte[sizeof(TickBinary)];	
+		}
+		
+//		[Test]
 		public void CompressTickTest() {
 			string pair = "USD_JPY_Volume";
 			TickReader tickReader = new TickReader();
