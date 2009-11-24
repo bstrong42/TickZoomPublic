@@ -135,30 +135,40 @@ namespace TickZoom.Common
         {
 			LogicalOrder order = buyLimit;
 			if( order.IsActive &&
-			    Strategy.Position.IsFlat &&
-			    tick.Ask <= order.Price) {
-				LogEntry("Long Limit Entry at " + tick);
-				Strategy.Position.Signal = order.Positions;
-				if( Strategy.Performance.GraphTrades) {
-	                Strategy.Chart.DrawTrade(order,tick.Ask,Strategy.Position.Signal);
-				}
-				CancelOrders();
-				setupList.Clear();
+			    Strategy.Position.IsFlat)
+            {
+                if (tick.Ask <= order.Price || 
+				    (tick.IsTrade && tick.Price < order.Price))
+                {
+                    LogEntry("Long Limit Entry at " + tick);
+                    Strategy.Position.Signal = order.Positions;
+                    if (Strategy.Performance.GraphTrades)
+                    {
+                        Strategy.Chart.DrawTrade(order, tick.Ask, Strategy.Position.Signal);
+                    }
+                    CancelOrders();
+                    setupList.Clear();
+                }
 			} 
 		}
 		
 		private void ProcessSellLimit(Tick tick) {
 			LogicalOrder order = sellLimit;
 			if( order.IsActive &&
-			    Strategy.Position.IsFlat &&
-			    tick.Bid >= order.Price) {
-				LogEntry("Short Limit Entry at " + tick);
-				Strategy.Position.Signal = - order.Positions;
-				if( Strategy.Performance.GraphTrades) {
-	                Strategy.Chart.DrawTrade(order,tick.Bid,Strategy.Position.Signal);
-				}
-				CancelOrders();
-                setupList.Clear();
+			    Strategy.Position.IsFlat)
+            {
+                if (tick.Bid >= order.Price || 
+				    (tick.IsTrade && tick.Price > order.Price))
+                {
+                    LogEntry("Short Limit Entry at " + tick);
+                    Strategy.Position.Signal = -order.Positions;
+                    if (Strategy.Performance.GraphTrades)
+                    {
+                        Strategy.Chart.DrawTrade(order, tick.Bid, Strategy.Position.Signal);
+                    }
+                    CancelOrders();
+                    setupList.Clear();
+                }
 			} 
 		}
 		

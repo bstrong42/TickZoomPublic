@@ -82,11 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GUI" />
-    <Folder Include="Indicators" />
     <Folder Include="Loaders" />
     <Folder Include="MiscTest" />
     <Folder Include="RealTime" />
-    <Folder Include="Strategies" />
     <ProjectReference Include="..\ExamplesPlugin\Examples.csproj">
       <Project>{B1A8F8F4-F7C9-46DC-B4BE-F08394778EF4}</Project>
       <Name>Examples</Name>

@@ -122,14 +122,19 @@ namespace TickZoom.Common
 		
 		private void ProcessBuyLimit(Tick tick) {
 			if( buyLimit.IsActive && 
-			    Strategy.Position.IsShort &&
-			    tick.Ask <= buyLimit.Price) {
-				LogExit("Buy Limit Exit at " + tick);
-				FlattenSignal();
-				if( Strategy.Performance.GraphTrades) {
-	                Strategy.Chart.DrawTrade(buyLimit,tick.Ask,Strategy.Position.Signal);
-				}
-				CancelOrders();
+			    Strategy.Position.IsShort)
+            {
+                if (tick.Ask <= buyLimit.Price || 
+				    (tick.IsTrade && tick.Price < buyLimit.Price))
+                {
+                    LogExit("Buy Limit Exit at " + tick);
+                    FlattenSignal();
+                    if (Strategy.Performance.GraphTrades)
+                    {
+                        Strategy.Chart.DrawTrade(buyLimit, tick.Ask, Strategy.Position.Signal);
+                    }
+                    CancelOrders();
+                }
 			} 
 		}
 		
@@ -148,14 +153,19 @@ namespace TickZoom.Common
 		
 		private void ProcessSellLimit(Tick tick) {
 			if( sellLimit.IsActive &&
-			    Strategy.Position.IsLong &&
-			    tick.Bid >= sellLimit.Price) {
-				LogExit("Sell Stop Limit at " + tick);
-				FlattenSignal();
-				if( Strategy.Performance.GraphTrades) {
-	                Strategy.Chart.DrawTrade(sellLimit,tick.Bid,Strategy.Position.Signal);
-				}
-				CancelOrders();
+			    Strategy.Position.IsLong)
+            {
+                if (tick.Bid >= sellLimit.Price || 
+				    (tick.IsTrade && tick.Price > sellLimit.Price))
+                {
+                    LogExit("Sell Stop Limit at " + tick);
+                    FlattenSignal();
+                    if (Strategy.Performance.GraphTrades)
+                    {
+                        Strategy.Chart.DrawTrade(sellLimit, tick.Bid, Strategy.Position.Signal);
+                    }
+                    CancelOrders();
+                }
 			}
 		}
 		

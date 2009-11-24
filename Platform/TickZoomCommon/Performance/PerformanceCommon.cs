@@ -140,9 +140,6 @@ namespace TickZoom.Common
 
 		private void EnterComboTradeInternal() {
 			if( IsTrace) Log.Trace("EnterComboTradeInternal()");
-			if( next.Position.IsLong) {
-				Log.Info("Long entry tick = " + Ticks[0]);
-			}
 			if( next.Position.IsShort && graphTrades) {
 				// TODO: Make offsets for drawing arrows and text relative to current scale.
 //				Chart.DrawArrow(ArrowDirection.Down,Color.Red,12.5f,Chart.ChartBars.BarCount,Ticks[0].Bid);
