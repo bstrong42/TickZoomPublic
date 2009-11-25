@@ -99,9 +99,9 @@ namespace TickZoom
             IntervalDefaults();
             LoadIntervals();
             IntervalDefaults();
-			storageFolder = ConfigurationSettings.AppSettings["AppDataFolder"];
-       		tickZoomEngine = ConfigurationSettings.AppSettings["TickZoomEngine"];
-       		txtSymbol.Text = ConfigurationSettings.AppSettings["Symbol"];
+			storageFolder = Factory.Settings["AppDataFolder"];
+       		tickZoomEngine = Factory.Settings["TickZoomEngine"];
+       		txtSymbol.Text = Factory.Settings["Symbol"];
             Array units = Enum.GetValues(typeof(BarUnit));
             DateTime availableDate = new DateTime(1800,1,1);
             startTimePicker.Value = startTimePicker.MinDate = availableDate;
@@ -109,8 +109,8 @@ namespace TickZoom
             
             endTimePicker.MinDate = availableDate;
             endTimePicker.Value = endTimePicker.MaxDate = DateTime.Now.AddDays(1).AddSeconds(-1);
-       		string startTimeStr = ConfigurationManager.AppSettings["startTime"];
-       		string EndTimeStr = ConfigurationManager.AppSettings["EndTime"];
+       		string startTimeStr = Factory.Settings["startTime"];
+       		string EndTimeStr = Factory.Settings["EndTime"];
        		if( startTimeStr != null) {
        			startTime = DateTime.Parse(startTimeStr);
        			startTimePicker.Value = startTime;
@@ -147,7 +147,7 @@ namespace TickZoom
 				}
 			}
 			modelLoaderBox.Items.AddRange(modelLoaderList.ToArray());
-			string value = ConfigurationSettings.AppSettings["ModelLoader"];
+			string value = Factory.Settings["ModelLoader"];
 			modelLoaderBox.SelectedItem = value;
         }
 
@@ -368,7 +368,7 @@ namespace TickZoom
 			SaveSetting(config,"Symbol",txtSymbol.Text);
 			SaveSetting(config,"UseModelLoader",modelLoaderBox.Enabled ? "true" : "false");
 			SaveSetting(config,"ModelLoader",modelLoaderBox.Text);
-			SaveSetting(config,"AutoUpdate",ConfigurationSettings.AppSettings["AutoUpdate"]);
+			SaveSetting(config,"AutoUpdate",Factory.Settings["AutoUpdate"]);
 			
 			SaveIntervals(config);
 			
@@ -386,7 +386,7 @@ namespace TickZoom
 			// Add an entry to appSettings.
 			int appStgCnt = ConfigurationManager.AppSettings.Count;
 			
-			SaveSetting(config,"AutoUpdate",ConfigurationSettings.AppSettings["AutoUpdate"]);
+			SaveSetting(config,"AutoUpdate",Factory.Settings["AutoUpdate"]);
 			
 			config.Save(ConfigurationSaveMode.Modified);
 			
@@ -657,20 +657,20 @@ namespace TickZoom
         }
 
 		void LoadIntervals() {
-			defaultBox.Text = CheckNull(ConfigurationManager.AppSettings["defaultBox"]);
-			defaultCombo.Text = CheckNull(ConfigurationManager.AppSettings["defaultCombo"]);
-			engineBarsBox.Text = CheckNull(ConfigurationManager.AppSettings["engineBarsBox"]);
-			engineBarsBox2.Text = CheckNull(ConfigurationManager.AppSettings["engineBarsBox2"]);
-			engineBarsCombo.Text = CheckNull(ConfigurationManager.AppSettings["engineBarsCombo"]);
-			engineBarsCombo2.Text = CheckNull(ConfigurationManager.AppSettings["engineBarsCombo2"]);
-			chartDisplayBox.Text = CheckNull(ConfigurationManager.AppSettings["chartDisplayBox"]);
-			chartDisplayCombo.Text = CheckNull(ConfigurationManager.AppSettings["chartDisplayCombo"]);
-			chartBarsBox.Text = CheckNull(ConfigurationManager.AppSettings["chartBarsBox"]);
-			chartBarsCombo.Text = CheckNull(ConfigurationManager.AppSettings["chartBarsCombo"]);
-			chartBarsBox2.Text = CheckNull(ConfigurationManager.AppSettings["chartBarsBox2"]);
-			chartBarsCombo2.Text = CheckNull(ConfigurationManager.AppSettings["chartBarsCombo2"]);
-			chartUpdateBox.Text = CheckNull(ConfigurationManager.AppSettings["chartUpdateBox"]);
-			chartUpdateCombo.Text = CheckNull(ConfigurationManager.AppSettings["chartUpdateCombo"]);
+			defaultBox.Text = CheckNull(Factory.Settings["defaultBox"]);
+			defaultCombo.Text = CheckNull(Factory.Settings["defaultCombo"]);
+			engineBarsBox.Text = CheckNull(Factory.Settings["engineBarsBox"]);
+			engineBarsBox2.Text = CheckNull(Factory.Settings["engineBarsBox2"]);
+			engineBarsCombo.Text = CheckNull(Factory.Settings["engineBarsCombo"]);
+			engineBarsCombo2.Text = CheckNull(Factory.Settings["engineBarsCombo2"]);
+			chartDisplayBox.Text = CheckNull(Factory.Settings["chartDisplayBox"]);
+			chartDisplayCombo.Text = CheckNull(Factory.Settings["chartDisplayCombo"]);
+			chartBarsBox.Text = CheckNull(Factory.Settings["chartBarsBox"]);
+			chartBarsCombo.Text = CheckNull(Factory.Settings["chartBarsCombo"]);
+			chartBarsBox2.Text = CheckNull(Factory.Settings["chartBarsBox2"]);
+			chartBarsCombo2.Text = CheckNull(Factory.Settings["chartBarsCombo2"]);
+			chartUpdateBox.Text = CheckNull(Factory.Settings["chartUpdateBox"]);
+			chartUpdateCombo.Text = CheckNull(Factory.Settings["chartUpdateCombo"]);
         }
 		
 		string CheckNull(string str) {
@@ -750,8 +750,8 @@ namespace TickZoom
         
         void Form1Shown(object sender, EventArgs e)
         {
-   			string autoUpdateFlag = ConfigurationSettings.AppSettings["AutoUpdate"];
-   			string runUpdate = ConfigurationSettings.AppSettings["RunUpdate"];
+   			string autoUpdateFlag = Factory.Settings["AutoUpdate"];
+   			string runUpdate = Factory.Settings["RunUpdate"];
    			if( "true".Equals(autoUpdateFlag) && "true".Equals(runUpdate)) {
 	           	commandWorker.RunWorkerAsync(4);
    		    } else {

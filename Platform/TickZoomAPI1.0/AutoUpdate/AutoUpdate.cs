@@ -36,13 +36,13 @@ namespace TickZoom.Api
 		
 		public AutoUpdate() {
 			currentVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-			autoUpdateDirectory = ConfigurationSettings.AppSettings["AppDataFolder"] +
+			autoUpdateDirectory = Factory.Settings["AppDataFolder"] +
 				Path.DirectorySeparatorChar + "AutoUpdate";
 			LoadUserKey();
 		}
 		
 		private void LoadUserKey() {
-			string appDataFolder = ConfigurationSettings.AppSettings["AppDataFolder"];
+			string appDataFolder = Factory.Settings["AppDataFolder"];
 			userKeyPath = appDataFolder + @"\" + userKeyFile;
 			try {
 				StreamReader streamReader = new StreamReader(userKeyPath);
@@ -152,7 +152,6 @@ namespace TickZoom.Api
 	
 		public string[] GetFileList()
 		{   
-			
 			string fileName = "fileList-"+currentVersion+".txt";
 			if( !DownloadFile(fileName)) {
 				log.Error("Auto Update: '"+fileName+"' was not returned for version " + CurrentVersion + ".");

@@ -47,7 +47,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
     <Reference Include="log4net">
-      <HintPath>$(TickZoomTools)\log4net\log4net.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\TickZoom\Tools\1.0\log4net\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -57,15 +57,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Logging\AssertFailedException.cs" />
+    <Compile Include="Logging\FileAppender.cs" />
     <Compile Include="Logging\LogImpl.cs" />
     <Compile Include="Logging\LoggingQueue.cs" />
     <Compile Include="Logging\LogManagerImpl.cs" />
     <Compile Include="Logging\SymbolFilter.cs" />
     <Compile Include="Logging\TimeStampFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Lib\log4net.dll" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Logging" />
+    <Folder Include="Lib" />
     <ProjectReference Include="..\TickZoomAPI1.0\API1.0.csproj">
       <Project>{27D6C88D-52B6-432C-820B-CD38A299830C}</Project>
       <Name>API1.0</Name>

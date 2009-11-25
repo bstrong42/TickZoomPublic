@@ -60,7 +60,7 @@ namespace TickZoom.Common
 
 		public static SymbolDictionary Create(string name, string defaultContents) {
 			lock( locker) {
-				string storageFolder = ConfigurationManager.AppSettings.Get("AppDataFolder");
+				string storageFolder = Factory.Settings["AppDataFolder"];
 				string dictionaryPath = storageFolder + @"\Dictionary\"+name+".tzdict";
 				Directory.CreateDirectory(Path.GetDirectoryName(dictionaryPath));
 				SymbolDictionary dictionary;
@@ -345,7 +345,7 @@ namespace TickZoom.Common
 #endregion
 
 #region USER_DICTIONARY
-		public static string UserDictionary = @"<?xml version=""1.0"" encoding=""utf-8""?>
+		public static string UserDictionary = @"<?xml version=""1.0"" encoding=""utf-16""?>
 <category name=""MB Trading""> 
      <category name=""Stock"">
         <property name=""FullPointValue"" value=""1"" />

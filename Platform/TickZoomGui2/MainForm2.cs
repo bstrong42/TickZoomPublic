@@ -104,12 +104,10 @@ namespace TickZoom
 			DummyDoc dummyDoc = new DummyDoc();
 
 			int count = 1;
-			//string text = "C:\\MADFDKAJ\\ADAKFJASD\\ADFKDSAKFJASD\\ASDFKASDFJASDF\\ASDFIJADSFJ\\ASDFKDFDA" + count.ToString();
             string text = "Document" + count.ToString();
             while (FindDocument(text) != null)
 			{
 				count ++;
-                //text = "C:\\MADFDKAJ\\ADAKFJASD\\ADFKDSAKFJASD\\ASDFKASDFJASDF\\ASDFIJADSFJ\\ASDFKDFDA" + count.ToString();
                 text = "Document" + count.ToString();
             }
 			dummyDoc.Text = text;

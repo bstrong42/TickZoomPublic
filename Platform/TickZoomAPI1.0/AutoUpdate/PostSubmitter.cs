@@ -42,7 +42,7 @@ namespace TickZoom.Api
 	/// </summary>
 	internal class PostSubmitter
 	{
-		string downloadDirectory = @"c:\TickZoom\";
+		string downloadDirectory = Factory.Settings["AppDataFolder"];
 		string contentDisposition;
 		string fullFileName;
 		string baseName;

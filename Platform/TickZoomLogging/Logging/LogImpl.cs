@@ -97,7 +97,7 @@ namespace TickZoom.Logging
         
  		private void ConvertSymbols() {
 			symbolMap = new Dictionary<string, string>();
-			string symbols = System.Configuration.ConfigurationManager.AppSettings["LogSymbols"];
+			string symbols = Factory.Settings["LogSymbols"];
 			if( symbols != null) {
 				string[] array = symbols.Split(',');
 				for( int i=0;i<array.Length; i++) {
@@ -111,7 +111,7 @@ namespace TickZoom.Logging
 		
 		private void ConvertTimes() {
 			beginTime = TimeStamp.MinValue;
-			string beginTimeStr = ConfigurationManager.AppSettings["LogTickStart"];
+			string beginTimeStr = Factory.Settings["LogTickStart"];
 			if( beginTimeStr != null) {
 				beginTimeStr = beginTimeStr.Trim();
 				if( beginTimeStr.Length > 0) {
@@ -119,7 +119,7 @@ namespace TickZoom.Logging
 				}
 			}
 			endTime = TimeStamp.MaxValue;
-			string endTimeStr = ConfigurationManager.AppSettings["LogTickStop"];
+			string endTimeStr = Factory.Settings["LogTickStop"];
 			if( endTimeStr != null) {
 				endTimeStr = endTimeStr.Trim();
 				if( endTimeStr.Length > 0) {

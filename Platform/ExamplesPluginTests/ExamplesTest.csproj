@@ -1,9 +1,8 @@
-﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{E12CA83B-0ACF-4E59-8C6C-F4D51A3DDC3C}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <TickZoomTools Condition=" '$(TickZoomTools)' == '' ">C:\TickZoom\Tools\1.0</TickZoomTools>
     <OutputType>Library</OutputType>
     <RootNamespace>ExamplesPluginTests</RootNamespace>
     <AssemblyName>ExamplesTest</AssemblyName>
@@ -47,7 +46,7 @@
   </Target>
   <ItemGroup>
     <Reference Include="nunit.framework">
-      <HintPath>$(TickZoomTools)\NUnit\bin\net-2.0\framework\nunit.framework.dll</HintPath>
+      <HintPath>Lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -79,11 +78,13 @@
     <Compile Include="RealTime\MockProviderDualSymbolTest.cs" />
     <Compile Include="RealTime\MockProviderSimpleTest.cs" />
     <None Include="app.config" />
+    <None Include="Lib\nunit.framework.dll" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GUI" />
     <Folder Include="Loaders" />
     <Folder Include="MiscTest" />
+    <Folder Include="Lib" />
     <Folder Include="RealTime" />
     <ProjectReference Include="..\ExamplesPlugin\Examples.csproj">
       <Project>{B1A8F8F4-F7C9-46DC-B4BE-F08394778EF4}</Project>

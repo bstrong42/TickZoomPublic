@@ -58,7 +58,7 @@ namespace TickZoom.Api
 		
 		private Plugins()
 		{
-			string appData = ConfigurationManager.AppSettings.Get("AppDataFolder");
+			string appData = Factory.Settings["AppDataFolder"];
 			if( appData == null) {
 				throw new ApplicationException("AppDataFolder was not set in app.config.");
 			}

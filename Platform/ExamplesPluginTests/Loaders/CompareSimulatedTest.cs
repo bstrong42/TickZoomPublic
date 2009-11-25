@@ -49,41 +49,45 @@ namespace Loaders
 			
 		[TestFixtureSetUp]
 		public void RunStrategy() {
-			fullTickStarter = new HistoricalStarter(false);
-			
-			// Set run properties as in the GUI.
-			fullTickStarter.ProjectProperties.Starter.StartTime = new TimeStamp(1800,1,1);
-    		fullTickStarter.ProjectProperties.Starter.EndTime = new TimeStamp(1990,1,1);
-    		fullTickStarter.DataFolder = "TestData";
-    		fullTickStarter.ProjectProperties.Starter.Symbols = "FullTick";
-			fullTickStarter.ProjectProperties.Starter.IntervalDefault = Intervals.Day1;
-			
-			// Run the loader.
-			ExampleOrdersLoader loader = new ExampleOrdersLoader();
-    		fullTickStarter.Run(loader);
-
-    		// Get the stategy
-    		fullTickData = loader.TopModel as ExampleOrderStrategy;
-    		
-    		/// <summary>
-    		/// Now run the other strategy to compare results.
-    		/// </summary>
-    		
-			fourTickStarter = new HistoricalStarter(false);
-			
-			// Set run properties as in the GUI.
-			fourTickStarter.ProjectProperties.Starter.StartTime = new TimeStamp(1800,1,1);
-    		fourTickStarter.ProjectProperties.Starter.EndTime = new TimeStamp(1990,1,1);
-    		fourTickStarter.DataFolder = "TestData";
-    		fourTickStarter.ProjectProperties.Starter.Symbols = "Daily4Sim";
-			fourTickStarter.ProjectProperties.Starter.IntervalDefault = Intervals.Day1;
-			
-			// Run the loader.
-			ExampleSimulatedLoader simulatedLoader = new ExampleSimulatedLoader();
-    		fourTickStarter.Run(simulatedLoader);
-
-    		// Get the stategy
-    		fourTicksPerBar = simulatedLoader.TopModel as ExampleOrderStrategy;
+			try {
+				fullTickStarter = new HistoricalStarter(false);
+				
+				// Set run properties as in the GUI.
+				fullTickStarter.ProjectProperties.Starter.StartTime = new TimeStamp(1800,1,1);
+	    		fullTickStarter.ProjectProperties.Starter.EndTime = new TimeStamp(1990,1,1);
+	    		fullTickStarter.DataFolder = "TestData";
+	    		fullTickStarter.ProjectProperties.Starter.Symbols = "FullTick";
+				fullTickStarter.ProjectProperties.Starter.IntervalDefault = Intervals.Day1;
+				
+				// Run the loader.
+				ExampleOrdersLoader loader = new ExampleOrdersLoader();
+	    		fullTickStarter.Run(loader);
+	
+	    		// Get the stategy
+	    		fullTickData = loader.TopModel as ExampleOrderStrategy;
+	    		
+	    		/// <summary>
+	    		/// Now run the other strategy to compare results.
+	    		/// </summary>
+	    		
+				fourTickStarter = new HistoricalStarter(false);
+				
+				// Set run properties as in the GUI.
+				fourTickStarter.ProjectProperties.Starter.StartTime = new TimeStamp(1800,1,1);
+	    		fourTickStarter.ProjectProperties.Starter.EndTime = new TimeStamp(1990,1,1);
+	    		fourTickStarter.DataFolder = "TestData";
+	    		fourTickStarter.ProjectProperties.Starter.Symbols = "Daily4Sim";
+				fourTickStarter.ProjectProperties.Starter.IntervalDefault = Intervals.Day1;
+				
+				// Run the loader.
+				ExampleSimulatedLoader simulatedLoader = new ExampleSimulatedLoader();
+	    		fourTickStarter.Run(simulatedLoader);
+	
+	    		// Get the stategy
+	    		fourTicksPerBar = simulatedLoader.TopModel as ExampleOrderStrategy;
+			} catch( Exception ex) {
+				Console.Out.WriteLine(ex.GetType() + ": " + ex.Message + Environment.NewLine + ex.StackTrace);
+			}
     		
 		}
 		

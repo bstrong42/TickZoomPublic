@@ -71,7 +71,7 @@ namespace TickZoom.TickUtil
 		
 		public void Initialize(string _folder, SymbolInfo _symbol) {
 			this.symbol = _symbol;
-       		string storageFolder = ConfigurationSettings.AppSettings["AppDataFolder"];
+       		string storageFolder = Factory.Settings["AppDataFolder"];
        		if( storageFolder == null) {
        			throw new ApplicationException( "Must set AppDataFolder property in app.config");
        		}

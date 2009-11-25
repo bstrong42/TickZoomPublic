@@ -82,7 +82,7 @@ namespace TickZoom.Api
             
             LogMsg("Environment.CurrentDirectory = " + currentDirectoryPath);
 
-            bool runUpdate = "true".Equals(ConfigurationSettings.AppSettings["RunUpdate"]);
+            bool runUpdate = "true".Equals(Factory.Settings["RunUpdate"]);
             object obj = null;
             try { 
 	            obj = Load( currentDirectoryPath, type, assemblyName, runUpdate, args);
@@ -116,7 +116,7 @@ namespace TickZoom.Api
 	        
 			if( runUpdate) {
 	        	LogMsg("Looking for AutoUpdate downloaded files.");
-		        string appDataFolder = ConfigurationSettings.AppSettings["AppDataFolder"];
+		        string appDataFolder = Factory.Settings["AppDataFolder"];
 		        string autoUpdateFolder = appDataFolder+@"\AutoUpdate";
 		        
 		        Directory.CreateDirectory(autoUpdateFolder);

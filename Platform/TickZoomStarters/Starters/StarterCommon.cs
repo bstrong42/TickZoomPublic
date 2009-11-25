@@ -56,7 +56,7 @@ namespace TickZoom.Common
    		int startCount = 0;
 	    static object callBackLocker = new object();
 	    ProjectProperties projectProperties = new ProjectPropertiesCommon();
-	    string projectFile = ConfigurationSettings.AppSettings["AppDataFolder"] + @"\portfolio.tzproj";
+	    string projectFile = Factory.Settings["AppDataFolder"] + @"\portfolio.tzproj";
 		private List<Provider> tickProviders = new List<Provider>();
 		
 		public StarterCommon() : this(true) {
@@ -68,7 +68,7 @@ namespace TickZoom.Common
 				Factory.Engine.Release();
 				Factory.Provider.Release();
 			}
-			string dataFolder = ConfigurationSettings.AppSettings["DataFolder"];
+			string dataFolder = Factory.Settings["DataFolder"];
 			if( dataFolder != null) {
 				this.dataFolder = dataFolder;
 			}

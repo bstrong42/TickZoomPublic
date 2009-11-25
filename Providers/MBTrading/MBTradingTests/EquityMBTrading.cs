@@ -49,8 +49,9 @@ namespace TickZoom.Test
 		[TestFixtureSetUp]
 		public virtual void Init()
 		{
-			File.Delete(@"C:\TickZoom\Logs\MBTradingTests.log");
-			File.Delete(@"C:\TickZoom\Logs\MBTradingService.log");
+			string appData = Factory.Settings["AppDataFolder"];
+			File.Delete( appData + @"\Logs\MBTradingTests.log");
+			File.Delete( appData + @"\Logs\MBTradingService.log");
   			symbol = Factory.Symbol.LookupSymbol("MSFT");
 		}
 		

@@ -51,7 +51,7 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>$(TickZoomTools)\Zip\ICSharpCode.SharpZipLib.dll</HintPath>
+      <HintPath>Lib\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -60,6 +60,7 @@
     </Reference>
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Aspects\DiagramAttribute.cs" />
@@ -74,6 +75,8 @@
     <Compile Include="Classes\Factory.cs" />
     <Compile Include="Classes\FactorySupport.cs" />
     <Compile Include="Classes\Service.cs" />
+    <Compile Include="Classes\ConfigFile.cs" />
+    <Compile Include="Classes\Settings.cs" />
     <Compile Include="Classes\TickBinary.cs" />
     <Compile Include="Classes\TimeStamp.cs" />
     <Compile Include="ClientInterfaces\ModelInterface.cs" />
@@ -174,9 +177,11 @@
     <Compile Include="Response\TickFeed.cs" />
     <Compile Include="Response\Trade.cs" />
     <Compile Include="Response\TradeField.cs" />
+    <None Include="Lib\ICSharpCode.SharpZipLib.dll" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HTTP" />
     <Folder Include="AutoUpdate" />
+    <Folder Include="Lib" />
   </ItemGroup>
 </Project>

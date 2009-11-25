@@ -89,7 +89,7 @@ namespace TickZoom
 //				}
 //			}
 //			modelBox.Items.AddRange(modelList.ToArray());
-//			value = ConfigurationSettings.AppSettings["Model"];
+//			value = Factory.Settings["Model"];
 //			modelBox.SelectedItem = value;
 //        }
 
@@ -164,7 +164,8 @@ namespace TickZoom
         {
         	projectDoc.PortfolioControl.WriteProject();
     		Starter starter = new HistoricalStarter();
-    		starter.ProjectFile = @"C:\TickZoom\portfolio.tzproj";
+    		string appData = Factory.Settings["AppDataFolder"];
+    		starter.ProjectFile = appData + @"\portfolio.tzproj";
     		starter.BackgroundWorker = bw;
     		starter.ShowChartCallback = new ShowChartCallback(projectDoc.DisplayChart);
     		starter.CreateChartCallback = new CreateChartCallback(projectDoc.CreateChart);

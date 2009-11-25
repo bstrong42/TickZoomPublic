@@ -47,7 +47,7 @@ namespace TickZoom.Utilities
 		private string dllFolder;
 		[TestFixtureSetUp]
 		public void Setup() {
-			appData = ConfigurationSettings.AppSettings["AppDataFolder"];
+			appData = Factory.Settings["AppDataFolder"];
 			dllFolder =  appData + Path.DirectorySeparatorChar +
 				@"AutoUpdate\" + testVersion + Path.DirectorySeparatorChar;
 		}
@@ -122,7 +122,7 @@ namespace TickZoom.Utilities
 			bool retVal = updater.DownloadFile("TickZoomEngine-"+testVersion+".dll");
 			Assert.IsTrue(retVal,"did download");
 			Assert.AreEqual("", updater.Message);
-			string appData = ConfigurationSettings.AppSettings["AppDataFolder"];
+			string appData = Factory.Settings["AppDataFolder"];
 			string dllFile =  appData + Path.DirectorySeparatorChar +
 				@"AutoUpdate\" + updater.CurrentVersion + Path.DirectorySeparatorChar +
 				"TickZoomEngine-"+updater.CurrentVersion+".dll.zip";

@@ -36,7 +36,6 @@ namespace tzdata
 	{
 		public static void Main(string[] args)
 		{
-//			args = new String[] { @"C:\TickZoom\TestData\MultiFiltered" };
 //			new Query(args);
 			new Filter(args);
 			

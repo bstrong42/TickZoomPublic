@@ -66,7 +66,8 @@ namespace TickZoom
 				log = Factory.Log.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 				projectProperties = new ProjectProperties();
 				treeView.LabelEdit = true;
-				TickZoom.Api.ProjectProperties loadProjectProperties = ProjectPropertiesCommon.Create(new StreamReader(@"C:\TickZoom\portfolio.xml"));
+				string appData = Factory.Settings["AppDataFolder"];
+				TickZoom.Api.ProjectProperties loadProjectProperties = ProjectPropertiesCommon.Create(new StreamReader(appData + @"\portfolio.xml"));
 				ReloadProjectModels(loadProjectProperties);
 			}
 		}
@@ -157,7 +158,8 @@ namespace TickZoom
 			XmlWriterSettings settings = new XmlWriterSettings();
 			settings.Indent = true;
 			settings.IndentChars = ("    ");
-			using (XmlWriter writer = XmlWriter.Create(@"C:\TickZoom\portfolio.xml", settings))
+			string appData = Factory.Settings["AppDataFolder"];
+			using (XmlWriter writer = XmlWriter.Create(appData + @"\portfolio.xml", settings))
 			{
 				writer.WriteStartDocument();
 				SerializeNode(writer, node);

@@ -600,7 +600,6 @@ namespace ZedGraph
 	#region CopyMethod
     public static void AdjustBrightness2(ref Bitmap image, int brightness)
     {
-//		image = new Bitmap(@"C:\TickZoom\TestImage.jpg");
         int offset = 0;
         brightness = (brightness * 255) / 100;
         // GDI+ still lies to us - the return format is BGR, NOT RGB.
@@ -797,7 +796,8 @@ namespace ZedGraph
 		/// </param>
 		int paintCount = 0;
 		public void LogImage( string name, Bitmap bitmap) {
-			string dir = @"C:\TickZoom\Images";
+			string appData = Factory.Settings["AppDataFolder"];
+			string dir = appData + @"\Images";
 			Directory.CreateDirectory( dir);
 			bitmap.Save(dir + @"\"+paintCount+name+".jpg",System.Drawing.Imaging.ImageFormat.Jpeg);
 		}

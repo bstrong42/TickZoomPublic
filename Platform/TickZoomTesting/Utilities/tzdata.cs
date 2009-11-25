@@ -29,8 +29,9 @@
 
 
 using System;
-using NUnit.Framework;
 using System.Configuration;
+using NUnit.Framework;
+using TickZoom.Api;
 using tzdata;
 
 namespace TickZoom.Utilities
@@ -41,7 +42,7 @@ namespace TickZoom.Utilities
 		[Test]
 		public void TestFilter()
 		{
-	       	string storageFolder = ConfigurationSettings.AppSettings["AppDataFolder"];
+	       	string storageFolder = Factory.Settings["AppDataFolder"];
 	       	if( storageFolder == null) {
 	       		throw new ApplicationException( "Must set AppDataFolder property in app.config");
 	       	}

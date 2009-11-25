@@ -33,8 +33,7 @@ using TickZoom.Common;
 
 
 
- // for domain enum                            // for domain enum. Add the following as a COM reference - C:\WINDOWS\Microsoft.NET\Framework\vXXXXXX\mscoree.tlb
-
+ 
 #if TESTING
 namespace TickZoom.TradingFramework
 {

@@ -30,6 +30,7 @@
 using System;
 using System.ComponentModel;
 using System.Configuration;
+using System.IO;
 
 namespace TickZoom.Api
 {
@@ -65,7 +66,7 @@ namespace TickZoom.Api
 				if( engineFactory == null) {
 					lock(Locker) {
 						if( engineFactory == null) {
-							string profilerFlag = ConfigurationManager.AppSettings["TickZoomProfiler"];
+							string profilerFlag = Factory.Settings["TickZoomProfiler"];
 				       		string engineName;
 				       		if( "true".Equals(profilerFlag)) {
 				       			engineName = "TickZoomProfiler";
@@ -182,5 +183,13 @@ namespace TickZoom.Api
 			}
    			return retVal;
    		}
+		
+		public static Settings Settings {
+			get {
+				return new Settings();
+			}
+		}
 	}
+	
+
 }

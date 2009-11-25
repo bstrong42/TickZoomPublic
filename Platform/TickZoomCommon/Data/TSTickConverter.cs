@@ -49,7 +49,7 @@ namespace TickZoom.Common
 		TickWriter tickWriter;
 		TickImpl tickImpl = new TickImpl();
 
-		string path = ConfigurationSettings.AppSettings["AppDataFolder"] + @"\DataCache\";		// *** specify the path to the input file here
+		string path = Factory.Settings["AppDataFolder"] + @"\DataCache\";		// *** specify the path to the input file here
 		SymbolInfo symbol;									// take user input symbol
 		string ext = ".txt";							// *** specify input file extension here
 		double aTick = 0.25;							// *** specify the minimum price fluctuation here

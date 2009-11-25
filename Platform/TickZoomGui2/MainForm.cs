@@ -119,12 +119,10 @@ namespace TickZoom
 			ProjectDoc projectDoc = new ProjectDoc();
 
 			int count = 1;
-			//string text = "C:\\MADFDKAJ\\ADAKFJASD\\ADFKDSAKFJASD\\ASDFKASDFJASDF\\ASDFIJADSFJ\\ASDFKDFDA" + count.ToString();
             string text = "Project" + count.ToString();
             while (FindDocument(text) != null)
 			{
 				count ++;
-                //text = "C:\\MADFDKAJ\\ADAKFJASD\\ADFKDSAKFJASD\\ASDFKASDFJASDF\\ASDFIJADSFJ\\ASDFKDFDA" + count.ToString();
                 text = "Project" + count.ToString();
             }
 			projectDoc.Text = text;

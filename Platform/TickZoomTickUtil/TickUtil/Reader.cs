@@ -63,7 +63,7 @@ namespace TickZoom.TickUtil
 		
 		public Reader()
 		{
-      		storageFolder = ConfigurationSettings.AppSettings["AppDataFolder"];
+      		storageFolder = Factory.Settings["AppDataFolder"];
        		if( storageFolder == null) {
        			throw new ApplicationException( "Must set AppDataFolder property in app.config");
        		}

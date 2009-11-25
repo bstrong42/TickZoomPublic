@@ -89,7 +89,7 @@ namespace TickZoom
 			if( !DesignMode) {
 				log = Factory.Log.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 				initialInterval = Factory.Engine.DefineInterval(BarUnit.Default,0);
-	       		storageFolder = ConfigurationSettings.AppSettings["AppDataFolder"];
+	       		storageFolder = Factory.Settings["AppDataFolder"];
 	       		if( storageFolder == null) {
 	       			throw new ApplicationException( "Must set AppDataFolder property in app.config");
 	       		}

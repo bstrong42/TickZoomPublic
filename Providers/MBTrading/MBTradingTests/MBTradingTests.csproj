@@ -3,7 +3,6 @@
     <ProjectGuid>{2D25D6A7-2A7F-4DB1-9F29-88282F8CC5E2}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <TickZoomTools Condition=" '$(TickZoomTools)' == '' ">C:\TickZoom\Tools\1.0</TickZoomTools>
     <OutputType>Library</OutputType>
     <RootNamespace>MBTradingTests</RootNamespace>
     <AssemblyName>MBTradingTests</AssemblyName>
@@ -40,12 +39,6 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
-    <Reference Include="nunit.core">
-      <HintPath>$(TickZoomTools)\NUnit\bin\net-2.0\lib\nunit.core.dll</HintPath>
-    </Reference>
-    <Reference Include="nunit.framework">
-      <HintPath>$(TickZoomTools)\NUnit\bin\net-2.0\framework\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
