@@ -39,11 +39,11 @@ namespace TickZoom.Logging
     /// </summary>
     public class FileAppender : log4net.Appender.FileAppender
     {
-        public FileAppender()
-        {
-            // set the log level
-//            LogManager.GetRepository().Threshold = LogManager.GetRepository().LevelMap[logLevel];
-        }
+//        public FileAppender()
+//        {
+//            // set the log level
+////            LogManager.GetRepository().Threshold = LogManager.GetRepository().LevelMap[logLevel];
+//        }
 
         public override string File
         {
@@ -62,9 +62,9 @@ namespace TickZoom.Logging
                     // get the log file name from the config file.
                     string logFileName = value.Replace("AppDataFolder",logDirectory);
 
-                    base.File = logDirectory + logFileName;
+                    base.File = logFileName;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     base.File = value;
                 }
