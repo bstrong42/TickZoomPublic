@@ -155,10 +155,7 @@ namespace TickZoom
 			if( Factory.AutoUpdate(bw)) {
 				ConfigurationSettings.AppSettings["AutoUpdate"] = "false";
 				SaveAutoUpdate();
-				log.Notice("Application Will Restart in 5 Seconds");
-				Thread.Sleep(5000);
-				Terminate();
-				Application.Restart();
+				log.Notice("AutoUpdate succesful. Restart unnecessary.");
 			}
         	CheckForEngineInvoke();
 		}
