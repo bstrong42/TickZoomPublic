@@ -137,27 +137,22 @@ namespace TickZoom.Common
 			pair.EntryBar = Chart.ChartBars.BarCount;
 			transactionPairsBinary.Add(pair);
 		}
-
+		
 		private void EnterComboTradeInternal() {
-			if( IsTrace) Log.Trace("EnterComboTradeInternal()");
-			if( next.Position.IsShort && graphTrades) {
-				// TODO: Make offsets for drawing arrows and text relative to current scale.
-//				Chart.DrawArrow(ArrowDirection.Down,Color.Red,12.5f,Chart.ChartBars.BarCount,Ticks[0].Bid);
-//				Chart.DrawText(transactionPairsBinary.Count.ToString(),Color.Red,Chart.ChartBars.BarCount,Ticks[0].Bid+0.1,Positioning.LowerLeft);
-			}
-			if( next.Position.IsLong && graphTrades) {
-//				Chart.DrawArrow(ArrowDirection.Up,Color.Green,12.5f,Chart.ChartBars.BarCount,Ticks[0].Ask);
-//				Chart.DrawText(transactionPairsBinary.Count.ToString(),Color.Green,Chart.ChartBars.BarCount,Ticks[0].Ask-0.1,Positioning.UpperLeft);
-			}
-			TransactionPairBinary pair = TransactionPairBinary.Create();
-			pair.Direction = next.Position.Signal;
 			if( next.Position.Signal > 0) {
-				pair.EntryPrice = Ticks[0].Ask;
+				EnterComboTrade(Ticks[0].Ask);
 			} else if( next.Position.Signal < 0) {
-				pair.EntryPrice = Ticks[0].Bid;
+				EnterComboTrade(Ticks[0].Bid);
 			} else {
 				throw new ApplicationException( "Direction was unset.");
 			}
+		}
+
+		public void EnterComboTrade(double fillPrice) {
+			if( IsTrace) Log.Trace("EnterComboTradeInternal()");
+			TransactionPairBinary pair = TransactionPairBinary.Create();
+			pair.Direction = next.Position.Signal;
+			pair.EntryPrice = fillPrice;
 			pair.EntryTime = Ticks[0].Time;
 			pair.EntryBar = Chart.ChartBars.BarCount;
 			comboTradesBinary.Add(pair);
@@ -191,15 +186,21 @@ namespace TickZoom.Common
 		}
 		
 		private void ExitComboTradeInternal() {
-			if( IsTrace) Log.Trace("ExitComboTradeInternal()");
 			TransactionPairBinary comboTrade = comboTradesBinary.Current;
 			Tick tick = Ticks[0];
 			if( comboTrade.Direction > 0) {
-				comboTrade.ExitPrice = tick.Bid;
+				ExitComboTrade(tick.Bid);
 			} else {
-				comboTrade.ExitPrice = tick.Ask;
+				ExitComboTrade(tick.Ask);
 			}
-			comboTrade.ExitTime = Ticks[0].Time;
+		}
+					
+		public void ExitComboTrade(double fillPrice) {
+			if( IsTrace) Log.Trace("ExitComboTradeInternal()");
+			TransactionPairBinary comboTrade = comboTradesBinary.Current;
+			Tick tick = Ticks[0];
+			comboTrade.ExitPrice = fillPrice;
+			comboTrade.ExitTime = tick.Time;
 			comboTrade.ExitBar = Chart.ChartBars.BarCount;
 			comboTrade.Completed = true;
 			comboTradesBinary.Current = comboTrade;
