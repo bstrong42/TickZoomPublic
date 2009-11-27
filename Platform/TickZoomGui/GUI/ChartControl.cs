@@ -432,6 +432,9 @@ namespace TickZoom
 			// were hard code, calibrated to Forex prices.
 			ArrowObj arrow = CreateArrow( direction, color, 12.5f, ChartBars.BarCount, fillPrice);
 			StringBuilder sb = new StringBuilder();
+			if( order.Tag != null) {
+				sb.AppendLine(order.Tag);
+			}
 			sb.Append(order.TradeDirection);
 			sb.Append(" ");
 			sb.AppendLine(order.Type.ToString());

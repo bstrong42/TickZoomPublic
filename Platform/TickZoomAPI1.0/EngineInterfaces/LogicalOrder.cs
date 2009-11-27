@@ -61,5 +61,10 @@ namespace TickZoom.Api
 			set;
 		}
 		
+		string Tag {
+			get;
+			set;
+		}
+		
 	}
 }

@@ -92,12 +92,12 @@ namespace TickZoom.Common
 				} else if( next.Position.IsFlat) {
 					ExitTransactionInternal();
 					ExitComboTradeInternal();
-					if( Position.IsShort && graphTrades) {
-						Chart.DrawArrow(ArrowDirection.Up,Color.Black,12.5f,Chart.ChartBars.BarCount,Ticks[0].Ask);
-					}
-					if( Position.IsLong && graphTrades) {
-						Chart.DrawArrow(ArrowDirection.Down,Color.Black,12.5f,Chart.ChartBars.BarCount,Ticks[0].Bid);
-					}
+//					if( Position.IsShort && graphTrades) {
+//						Chart.DrawArrow(ArrowDirection.Up,Color.Black,12.5f,Chart.ChartBars.BarCount,Ticks[0].Ask);
+//					}
+//					if( Position.IsLong && graphTrades) {
+//						Chart.DrawArrow(ArrowDirection.Down,Color.Black,12.5f,Chart.ChartBars.BarCount,Ticks[0].Bid);
+//					}
 				} else if( (next.Position.IsLong && Position.IsShort) || (next.Position.IsShort && Position.IsLong)) {
 					// The signal must be opposite. Either -1 / 1 or 1 / -1
 					ExitTransactionInternal();
