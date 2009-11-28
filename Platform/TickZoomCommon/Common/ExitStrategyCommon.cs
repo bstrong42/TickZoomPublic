@@ -68,12 +68,12 @@ namespace TickZoom.Common
 		
 		public override void OnInitialize()
 		{
-			marketOrder = Data.CreateOrder();
+			marketOrder = Data.CreateOrder(this);
 			marketOrder.TradeDirection = TradeDirection.Exit;
 			Strategy.OrderManager.Add(marketOrder);
-			breakEvenStopOrder = Data.CreateOrder();
+			breakEvenStopOrder = Data.CreateOrder(this);
 			breakEvenStopOrder.TradeDirection = TradeDirection.Exit;
-			stopLossOrder = Data.CreateOrder();
+			stopLossOrder = Data.CreateOrder(this);
 			Strategy.OrderManager.Add(stopLossOrder);
 			stopLossOrder.TradeDirection = TradeDirection.Exit;
 			Strategy.OrderManager.Add(breakEvenStopOrder);
