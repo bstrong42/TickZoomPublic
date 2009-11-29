@@ -1,0 +1,70 @@
+Auto Update Feature
+
+NOTE: The TickZoom open source application auto downloads the TickZoom data engine for which
+a secure user key is required. You may request a 2 week FREE demo at http://www.tickzoom.com
+
+Installation of TickZoom
+
+These steps will setup your development environment so you start working on your own automated
+trading portfolio, get updates to TickZoom releases, and contribute any changes to TickZoom.
+
+Setting Up for Git With GitHub
+
+If this is your first time to use Git or GitHub, follow these steps. 
+
+1. Install Git http://cloud.github.com/downloads/tickzoom/TickZoomPublic/Git-1.6.5.1-preview20091022.exe
+
+2. Install TortoiseGit http://cloud.github.com/downloads/tickzoom/TickZoomPublic/Git-1.6.5.1-preview20091022.exe
+
+3. Click "Signup" on the upper right corner of the GitHub site. It's free to create an account.
+
+4. Next you need to setup a secure public key with your GitHub account to avoid entering a
+   password every time you use Git or TortoiseGit. Follow these steps:
+   
+   a. Open a Git Bash prompt by right clicking on any folder in Windows Explorer and click "Git Bash Here".
+   
+   b. At the prompt enter the following command:
+   
+        ssh-keygen -t rsa -C "your@email.address"
+        (Please enter 3 times for default file name, and empty pass phrase.)
+        
+   c. Now, use Windows Explorer to find your C:\Documents and Setting\[User Name]\.ssh folder.
+      Inside it, open the id_rsa.pub file in Notepad.
+   
+   d. Copy everything in the id_rsa.pub file to the clipboard. You need to paste that into your GitHub account.
+   
+   e. Now in a browser, open your GitHub account page. In the SSH Public Keys section click
+      "add another public key", then paste your key into the key field. If you leave the title
+      blank the key comment (your email) will be used for the title.
+
+You have completed setup and install of Git with GitHub. Now proceed with setup of TickZooom.
+
+Setting Up and Using TickZoom via Git
+
+1. You need to "Fork" the TickZoomPublic project on GitHub by clicking the "fork" button on the github site for
+   TickZoomPublic. This gives you a personal copy of the project to which you can push changes. Then a developer 
+   can "pull" your changes back into the original TickZOOM project.
+   
+2. After forking you will be on the home page of your "fork" of the TickZoomPublic project. You will find
+   2 url links on that page to "clone" your project. Copy the "Your Clone URL" which you can do easily by
+   clicking the small arrow to the right of it.
+
+3. Select or create a folder in Windows Explorer where you would like to keep your TickZoomPublic source project.
+   Right click on that folder in Windows Explorer and click "Git Bash Here" to open a Git Bash prompt.
+   
+4. At the prompt enter: git clone [paste Your Clone URL]
+   To paste your URL you need to click on upper left corner of the prompt window and select Edit then Paste.
+   
+5. You will see the progress as it creates the TickZoomPublic folder. It only takes several seconds.
+
+6. Finally, you can navigate to the TickZoomPublic folder in Windows Explorer, then the Platform/TickZoom.sln file
+   and open it in either SharpDevelop or Visual Studio. Compile and run the application.
+   
+7. If you already have a TickZoom folder with subfolders of DataCache, AutoUpdate, etc, TickZoom will "self
+   configure" by finding it on any disk drive and attach to it and run.
+   
+8. If the app never finds a TickZoom folder, then it will select your disk drive with the largest amount of free
+   space and create the folder there. You then need to get a user key and download a ZIP file with some sample
+   data to get started. Contact Wayne to get your Sample data.
+   
+The members only site for questions, tickets, and forums is at http://members.tickzoom.com
